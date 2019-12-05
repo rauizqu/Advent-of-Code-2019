@@ -1,0 +1,42 @@
+import java.io.*;
+public class Dia1 {
+
+	public static void main(String[] args) throws FileNotFoundException {
+		File archivo= null;
+		FileReader fr = null;
+		BufferedReader br = null;
+	      try {
+	          archivo = new File ("C:\\Users\\Raúl y Pablo\\Desktop\\AdventOfCode2019\\Dia1.txt");
+	          fr = new FileReader (archivo);
+	          br = new BufferedReader(fr);
+	          String linea;
+	          double lineaEnt;
+	          double suma=0;
+	          while((linea=br.readLine())!=null) {
+	        	  lineaEnt=devuelveSol(Integer.parseInt(linea));
+	        	  suma=suma+lineaEnt;
+	          }
+        	  System.out.println(suma); 
+	       }
+	       catch(Exception e){
+	          e.printStackTrace();
+	       }finally{
+	          try{                    
+	             if( null != fr ){   
+	                fr.close();     
+	             }                  
+	          }catch (Exception e2){ 
+	             e2.printStackTrace();
+	          }
+	       }
+	}
+	public static double devuelveSol(double numero) {
+		double suma=0.0;
+		while(Math.floor(numero/3)-2>0) {
+			numero=Math.floor(numero/3)-2;
+			suma=suma+numero;
+		}
+		return suma;
+	}
+
+}
